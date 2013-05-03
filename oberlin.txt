@@ -1,0 +1,36 @@
+Nodes
+Phillips  247  161
+Phillips_N 304 97
+Phillips_S 303 248
+Woodland-Union 311 19
+Union_1 437 42
+North_N 531 105
+Union_2 626 41
+Professor-Union 757 27
+North 529 134
+North_S 528 188
+Zechiel_N 378 193
+French_N  686 195
+Professor_1 746 198
+Zechiel 374 225
+French  675 225
+Zechiel_S 391 261
+Burton_N  536 277
+French_S  680 278
+Professor_2 752 307
+Noah_NW 319 365
+Noah_NE 434 364
+Burton  528 299
+Burton_S  527 358
+Noah  383 428
+East_NW 596 416
+East  665 448
+East_NE 701 406
+East_SE  698 488
+East_SW	591 478
+Professor_3 745	407
+Kahn_N 851 389
+Kahn 856 463
+Kahn_SW	841 518
+Kahn_SE 918 523
+Noah_SE
