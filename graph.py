@@ -36,51 +36,68 @@ class Node:
         self.name = name
 
     # Takes in a Node and adds it to this node's list of cities
+    # also adds it to the other node's list of cities, if it is not already there
     def add_edge(self, city):
         dist = sqrt((city.coord[0] - self.coord[0])**2 + (city.coord[1] - self.coord[1])**2)
         temp = Edge(city,dist)
         self.neighbors.append(temp)
+        temp2 = Edge(self,dist)
+        city.neighbors.append(temp2)
+
+    # Takes in a node and checks to see if it already has it in its edge list.
+    def has_edge(self, name):
+        for pal in self.neighbors:
+            if pal.city.name == name:
+                return True
+        return False
 
 class Graph:
     def __init__(self, cities=None, edges=None):
         # List of cities in the graph (nodes)
-        # Assume that all edges have already been created for the graph?
         self.cityList = []
         if cities:
             for city in cities:
                 self.cityList.append(city)
 
-def dij(start, finish, graph):
-    queue = start.neighbors 
-    queue = sorted(queue, key=lambda edge: edge.dist)
-    path = []
-    explored = []
-    while queue not empty: 
-        explored.append(queue[0].city)
-        # add the city to the explored set
+    def __repr__(self):
+        ret = "Cities: "
+        for city in self.cityList:
+            ret = ret + city.name + " "
+        return ret
+    
+    ## Add a node to the list of cities
+    def add_city(self, city):
+        self.cityList.append(city)
         
-        del queue[0]
-    for city in cities:
-        queue = []
-        city.neighbors = sorted(city.neighbors, key=lambda edge: edge.dist)
-        # now each cities neighbors are sorted by distance
-        queue = city.neighbors
-        while 
-        del queue[0] # remove after exploring
+    ## Takes in the name of a city and returns true if already in graph,
+    ## false otherwise.
+    def has_city(self, name):
+        if len(self.cityList) > 0:
+            for city in self.cityList:
+                if city.name == name:
+                    return True
+        return False
+
+    def get_city(self,name):
+        if len(self.cityList) > 0:
+            for city in self.cityList:
+                if city.name == name:
+                    return city
+        return None
 
 # Testing creation of nodes
-city1 = Node((1.0, 2.0), None, "Oberlin")
-city2 = Node((1.5, 2.2), None, "Elyria")
-city3 = Node((4.0, 5.2), city2, "Kipton")
-city1.add_edge(city2)
-city2.add_edge(city1)
-city2.add_edge(city3)
-city4 = Node((10.0, 20.3), city2, "Cleveland")
-city2.add_edge(city4)
-cities = [city1, city2, city3]
-edges = city2.neighbors
-for edge in sorted(edges, key=lambda edge: edge.dist):
-    print edge.city.name, edge.dist
+#city1 = Node((1.0, 2.0), None, "Oberlin")
+#city2 = Node((1.5, 2.2), None, "Elyria")
+#city3 = Node((4.0, 5.2), city2, "Kipton")
+#city1.add_edge(city2)
+#city2.add_edge(city1)
+#city2.add_edge(city3)
+#city4 = Node((10.0, 20.3), city2, "Cleveland")
+#city2.add_edge(city4)
+#cities = [city1, city2, city3]
+#edges = city2.neighbors
+#for edge in sorted(edges, key=lambda edge: edge.dist):
+#    print edge.city.name, edge.dist
     
 
 
