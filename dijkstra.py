@@ -13,8 +13,8 @@ def dijkstra(start, finish, graph):
     unexplored = []
 
     for city in graph.cityList:
-        dist[city.name] = -1
-        pred[city.name] = ""
+        dist[city.name] = -1.0
+        pred[city.name] = None
         unexplored.append(city.name)
 
     dist[start.name] = 0
@@ -27,25 +27,32 @@ def dijkstra(start, finish, graph):
                 min = dist[name]
                 minName = name
         
-        unexplored.remove(minName)
+        unexplored.remove(minName) 
         city = graph.get_city(minName)
-        # iterate through the edges
 
+        # iterate through the edges
         for neighbor in city.neighbors:
             temp = neighbor.city.name # get city associated with edge
             if dist[temp] < dist[minName] + neighbor.dist:
                 dist[temp] = dist[minName] + neighbor.dist
                 pred[temp] = minName
+    # The problem with this is that
+    # they can loop infinitely..
+    # but this might just be a problem with dijkstra's and not the implementation
 
     print dist
     print pred
+
     final_path = []
     cur = finish.name
+
     while cur != start.name:
         if final_path.count(cur) == 0:
             final_path.insert(0,cur)
             cur = pred[cur]
         else:
             break
+
     final_path.insert(0,start)
-    return final_path
+
+    return final_path, dist[finish.name]
