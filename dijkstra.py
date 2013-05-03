@@ -45,13 +45,31 @@ def dijkstra(start, finish, graph):
 
     final_path = []
     cur = finish.name
-
+    prev = ""
     while cur != start.name:
+
+        temp = graph.get_city(cur)
+        unexplored_neighbors = []
+        for v in temp.neighbors:
+            name = v.city.name
+            if final_path.count(name) == 0:
+                unexplored_neighbors.append(name)
+        print "unexplored neighbors for ",cur, "are",  unexplored_neighbors
+
         if final_path.count(cur) == 0:
             final_path.insert(0,cur)
+            prev = cur
             cur = pred[cur]
+        elif len(unexplored_neighbors) > 0:
+            for v in unexplored_neighbors:
+                final_path.insert(0, v)
+                prev = name
+                cur = pred[v]
         else:
-            break
+            if prev == "" or final_path.count(prev) != 0:
+                break
+            else:
+                cur = prev
 
     final_path.insert(0,start)
 
