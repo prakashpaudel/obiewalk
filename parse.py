@@ -1,5 +1,5 @@
 from graph import Graph, Edge, Node
-
+import dijkstra
 
 # Parses a text file to be input to Dijkstra's, etc
 # Each line contains a new node
@@ -28,10 +28,18 @@ def main():
 
         g.add_city(temp)
 
+    start = raw_input("Where do you want to start? ")
+    end = raw_input("Where do you want to end? ")
+    raw_list = []
+
     for city in g.cityList:
-        if city.has_edge("Hamilton"):
-            print "Yeah!"
+        raw_list.append(city.name)
+
+    if start in raw_list and end in raw_list:
+        print dijkstra.dijkstra(g.get_city(start), g.get_city(end), g)
+    else:
+        if start not in raw_list:
+            print "Sorry,", start, "is not a valid city name."
         else:
-            print "Nah!"
-        
+            print "Sorry,", end, "is not a valid city name."
 main()

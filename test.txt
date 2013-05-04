@@ -1,8 +1,8 @@
 Trenton 306 800 Hamilton
 Hamilton 337 764 Trenton PrincetonJunction
-PrincetonJunction 356 746 Hamilton Princeton
-Princeon 340 729 PrincetonJunction JerseyAve
-JerseyAve 409 696 Princeton NewBrunswick
+PrincetonJunction 356 746 Hamilton Princeton JerseyAve
+Princeton 340 729 PrincetonJunction
+JerseyAve 409 696 PrincetonJunction NewBrunswick
 NewBrunswick 435 667 JerseyAve Edison
 Edison 446 657 NewBrunswick Metuchen
 Metuchen 459 645 Edison Metropark

@@ -35,6 +35,15 @@ class Node:
             self.neighbors.append(neighbors)
         self.name = name
 
+    def __repr__(self):
+        return self.name
+
+    def print_edges(self):
+        print "Neighbors for", self.name, ":"
+        for bud in self.neighbors:
+            print bud.city.name, 
+        print "\n"
+
     # Takes in a Node and adds it to this node's list of cities
     # also adds it to the other node's list of cities, if it is not already there
     def add_edge(self, city):
@@ -85,22 +94,4 @@ class Graph:
                     return city
         return None
 
-# Testing creation of nodes
-#city1 = Node((1.0, 2.0), None, "Oberlin")
-#city2 = Node((1.5, 2.2), None, "Elyria")
-#city3 = Node((4.0, 5.2), city2, "Kipton")
-#city1.add_edge(city2)
-#city2.add_edge(city1)
-#city2.add_edge(city3)
-#city4 = Node((10.0, 20.3), city2, "Cleveland")
-#city2.add_edge(city4)
-#cities = [city1, city2, city3]
-#edges = city2.neighbors
-#for edge in sorted(edges, key=lambda edge: edge.dist):
-#    print edge.city.name, edge.dist
-    
-
-
-# TODO: File format that we can easily parse
-# to set up the graph without manually entering all of them.
 

@@ -2,75 +2,69 @@
 # obiewalk
 
 from graph import Graph, Edge, Node
+import heapq
+
 
 # start : originating node
 # finish : end goal
 # graph : current graph
 # nodes indexed by name
 def dijkstra(start, finish, graph):
-    dist = {}
-    pred = {}
-    unexplored = []
+    pq = []     # priority queue of items to explore, implemented using heapq
+    dist, pred, track = {}, {}, {}
+    explored = [start.name] # create the explored set
 
-    for city in graph.cityList:
-        dist[city.name] = -1.0
-        pred[city.name] = None
-        unexplored.append(city.name)
+    # init values to something
+    for node in graph.cityList:
+        dist[node.name], pred[node.name] = -1, None
 
-    dist[start.name] = 0
+    dist[start.name] = 0    # set starting distance to 0
     
-    while len(unexplored) > 0:
-        min = -50
-        minName = ""
-        for name in unexplored:
-            if min == -50 or dist[name] < min:
-                min = dist[name]
-                minName = name
-        
-        unexplored.remove(minName) 
-        city = graph.get_city(minName)
+    # Itemized entries are stored in the series: 
+    # [next, parent, edge_cost]
 
-        # iterate through the edges
-        for neighbor in city.neighbors:
-            temp = neighbor.city.name # get city associated with edge
-            if dist[temp] < dist[minName] + neighbor.dist:
-                dist[temp] = dist[minName] + neighbor.dist
-                pred[temp] = minName
-    # The problem with this is that
-    # they can loop infinitely..
-    # but this might just be a problem with dijkstra's and not the implementation
+    # initialize PQ to contain s's edges 
+    # we're doing this by edge
+    for edge in start.neighbors:
+        node = edge.city
+        dist[node.name] = edge.dist
+        track[node.name] = [node.name, start.name, dist[node.name]] # add info to track dict
+        heapq.heappush(pq, [node.name, start.name, dist[node.name]]) # push onto the priority queue
 
-    print dist
-    print pred
+    # While there are items in the priority queue...
+    while pq:
+        # let next be the min element of pq
+        next, p, edge_cost = heapq.heappop(pq)
 
-    final_path = []
+        if next == finish.name:
+            pred[next] = p # add pred, else the last while loop will not work
+            break
+
+        if next not in explored:
+            explored.append(next)
+            pred[next] = p
+            node = graph.get_city(next)
+            for edge in node.neighbors:
+                city = edge.city.name
+                if dist[city] != -1:
+                    # if the current distance entry is greater than the updated one, update it.
+                    if dist[city] > edge.dist + dist[next]:
+                        dist[city] = edge.dist + dist[next]
+                        # decrease the key
+                        track[city][2] = dist[city] # update the queue too
+                        track[city][1] = next
+                        heapq._siftdown(pq, 0, pq.index(track[city]))
+                else:
+                    dist[city] = edge.dist + dist[next]
+                    heapq.heappush(pq, [city, next, dist[city]])
+                    track[city] = [city,next,dist[city]]
+
     cur = finish.name
-    prev = ""
-    while cur != start.name:
+    path = []
 
-        temp = graph.get_city(cur)
-        unexplored_neighbors = []
-        for v in temp.neighbors:
-            name = v.city.name
-            if final_path.count(name) == 0:
-                unexplored_neighbors.append(name)
-        print "unexplored neighbors for ",cur, "are",  unexplored_neighbors
+    while pred.get(cur):
+        path.insert(0, pred.get(cur))
+        cur = pred[cur]       
+    path.append(finish.name)
 
-        if final_path.count(cur) == 0:
-            final_path.insert(0,cur)
-            prev = cur
-            cur = pred[cur]
-        elif len(unexplored_neighbors) > 0:
-            for v in unexplored_neighbors:
-                final_path.insert(0, v)
-                prev = name
-                cur = pred[v]
-        else:
-            if prev == "" or final_path.count(prev) != 0:
-                break
-            else:
-                cur = prev
-
-    final_path.insert(0,start)
-
-    return final_path, dist[finish.name]
+    return path
