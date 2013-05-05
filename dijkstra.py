@@ -1,0 +1,68 @@
+# dijkstra's
+
+from graph import Graph, Edge, Node
+import heapq
+
+# start : originating node
+# finish : end goal
+# graph : current graph
+# nodes indexed by name
+def dijkstra(start, finish, graph):
+    pq = []
+    dist, pred = {}, {}
+    last_pred = {}
+    explored = [start.name] 
+
+    # init values to something
+    for node in graph.cityList:
+        dist[node.name], pred[node.name], last_pred[node.name] = -1, None, None
+
+    dist[start.name] = 0   
+    
+    # initialize PQ to contain s's edges
+    for edge in start.neighbors:
+        node = edge.city
+        dist[node.name] = edge.dist
+        # push onto the heap: [dist, node, parent]
+        heapq.heappush(pq, [dist[node.name], node.name])
+        last_pred[node.name] = start.name
+
+    # While there are items in the priority queue...
+    while pq:
+        # let next be the min element of pq
+        edge_cost, next = heapq.heappop(pq)
+        p = last_pred[next]
+
+        if next == finish.name:
+            pred[next] = p
+            break
+
+        if next not in explored:
+            explored.append(next)
+            pred[next] = p
+            node = graph.get_city(next)
+            for edge in node.neighbors:
+                city = edge.city.name
+                if dist[city] > -1:
+                    # if the current distance entry is greater than the updated one, update it.
+                    if dist[city] > edge.dist + dist[next]: 
+                        old_dist = dist[city]
+                        dist[city] = edge.dist + dist[next]
+                        last_pred[city] = next # keep track of the last pred
+                        pq[pq.index([old_dist, city])] = [dist[city], city]
+                        # decrease the key, update dist & predecessor
+                        heapq._siftdown(pq, 0, pq.index([dist[city], city]))
+                else:
+                    dist[city] = edge.dist + dist[next]
+                    last_pred[city] = next
+                    heapq.heappush(pq, [dist[city], city])
+
+    # build the list
+    cur, path = finish.name, []
+    while pred.get(cur):
+        path.insert(0, pred.get(cur))
+        cur = pred[cur]       
+
+    path.append(finish.name)
+
+    return path

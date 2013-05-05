@@ -1,3 +1,8 @@
+'''
+Created on May 4, 2013
+
+@author: prakash
+'''
 ## Graph data structure
 # CS364 - Meg Davis, Pablo Horth, and Prakash Paudel
 
@@ -17,6 +22,32 @@ class Edge:
         self.city = city
         self.dist = dist
 
+    def get_city(self):
+        return self.city
+
+
+    def get_dist(self):
+        return self.dist
+
+
+    def set_city(self, value):
+        self.city = value
+
+
+    def set_dist(self, value):
+        self.dist = value
+
+
+    def del_city(self):
+        del self.city
+
+
+    def del_dist(self):
+        del self.dist
+
+    city = property(get_city, set_city, del_city, "city's docstring")
+    dist = property(get_dist, set_dist, del_dist, "dist's docstring")
+
 """
 Node class:
 Each node has:
@@ -35,55 +66,116 @@ class Node:
             self.neighbors.append(neighbors)
         self.name = name
 
+    def get_coord(self):
+        return self.coord
+
+
+    def get_neighbors(self):
+        return self.neighbors
+
+
+    def get_name(self):
+        return self.name
+
+
+    def set_coord(self, value):
+        self.coord = value
+
+
+    def set_neighbors(self, value):
+        self.neighbors = value
+
+
+    def set_name(self, value):
+        self.name = value
+
+
+    def del_coord(self):
+        del self.coord
+
+
+    def del_neighbors(self):
+        del self.neighbors
+
+
+    def del_name(self):
+        del self.name
+
+    def print_edges(self):
+        print "Neighbors for", self.name, ":"
+        for bud in self.neighbors:
+            print bud.city.name, 
+        print "\n"
+
     # Takes in a Node and adds it to this node's list of cities
+    # also adds it to the other node's list of cities, if it is not already there
     def add_edge(self, city):
         dist = sqrt((city.coord[0] - self.coord[0])**2 + (city.coord[1] - self.coord[1])**2)
         temp = Edge(city,dist)
         self.neighbors.append(temp)
+        temp2 = Edge(self,dist)
+        city.neighbors.append(temp2)
+
+    # Takes in a node and checks to see if it already has it in its edge list.
+    def has_edge(self, name):
+        for pal in self.neighbors:
+            if pal.city.name == name:
+                return True
+        return False
+    
+    def get_edge(self, name):
+        for pal in self.neighbors:
+            if pal.city.name == name:
+                return pal
+    
+    coord = property(get_coord, set_coord, del_coord, "coord's docstring")
+    neighbors = property(get_neighbors, set_neighbors, del_neighbors, "neighbors's docstring")
+    name = property(get_name, set_name, del_name, "name's docstring")
 
 class Graph:
     def __init__(self, cities=None, edges=None):
         # List of cities in the graph (nodes)
-        # Assume that all edges have already been created for the graph?
         self.cityList = []
         if cities:
             for city in cities:
                 self.cityList.append(city)
 
-def dij(start, finish, graph):
-    queue = start.neighbors 
-    queue = sorted(queue, key=lambda edge: edge.dist)
-    path = []
-    explored = []
-    while queue not empty: 
-        explored.append(queue[0].city)
-        # add the city to the explored set
-        
-        del queue[0]
-    for city in cities:
-        queue = []
-        city.neighbors = sorted(city.neighbors, key=lambda edge: edge.dist)
-        # now each cities neighbors are sorted by distance
-        queue = city.neighbors
-        while 
-        del queue[0] # remove after exploring
+    def get_city_list(self):
+        return self.cityList
 
-# Testing creation of nodes
-city1 = Node((1.0, 2.0), None, "Oberlin")
-city2 = Node((1.5, 2.2), None, "Elyria")
-city3 = Node((4.0, 5.2), city2, "Kipton")
-city1.add_edge(city2)
-city2.add_edge(city1)
-city2.add_edge(city3)
-city4 = Node((10.0, 20.3), city2, "Cleveland")
-city2.add_edge(city4)
-cities = [city1, city2, city3]
-edges = city2.neighbors
-for edge in sorted(edges, key=lambda edge: edge.dist):
-    print edge.city.name, edge.dist
+
+    def set_city_list(self, value):
+        self.cityList = value
+
+
+    def del_city_list(self):
+        del self.cityList
+
+
+    def __repr__(self):
+        ret = "Cities: "
+        for city in self.cityList:
+            ret = ret + city.name + " "
+        return ret
     
+    ## Add a node to the list of cities
+    def add_city(self, city):
+        self.cityList.append(city)
+        
+    ## Takes in the name of a city and returns true if already in graph,
+    ## false otherwise.
+    def has_city(self, name):
+        if len(self.cityList) > 0:
+            for city in self.cityList:
+                if city.name == name:
+                    return True
+        return False
 
-
-# TODO: File format that we can easily parse
-# to set up the graph without manually entering all of them.
-
+    def get_city(self,name):
+        if len(self.cityList) > 0:
+            for city in self.cityList:
+                if city.name == name:
+                    return city
+        return None
+    
+    cityList = property(get_city_list, set_city_list, del_city_list, "cityList's docstring")

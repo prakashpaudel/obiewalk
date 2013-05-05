@@ -1,0 +1,395 @@
+Phillips  247  161
+Phillips_N 304 97
+Phillips_S 303 248
+Woodland-Union 311 19
+Union_1 437 42
+North_N 531 105
+Union_2 626 41
+Professor-Union 757 27
+North 529 134
+North_S 528 188
+Zechiel_N 378 193
+French_N  686 195
+Professor_1 746 198
+Zechiel 374 225
+French  675 225
+Zechiel_S 391 261
+Burton_N  536 277
+French_S  680 278
+Professor_2 752 307
+Noah_NW 319 365
+Noah_NE 434 364
+Burton  528 299
+Burton_S  527 358
+Noah  383 428
+East_NW 596 416
+East  665 448
+East_NE 701 406
+East_SE 698 488
+East_SW 591 478
+Professor_3 745 407
+Kahn_N 851 389
+Kahn 856 463
+Kahn_SW 841 518
+Kahn_SE 918 523
+Noah_SE 439 488
+Barrows_NW 318 546
+Barrows_NE 442 546
+Barrows_SW 315 699
+Barrows 377 623
+Barrows_SE 440 703
+Hales_N 135 751
+Hales 85 857
+Hales_S 123 1000
+Science_NW 449 740
+Science 445 784
+Science_NE 572 746
+Wright_NW 599 745
+Wright 654 741
+NQuad_1 601 592
+Barnard_NW 647 591
+Barnard 666 628
+Barnard_S 666 673
+Barnard_NE 725 591
+Professor_4 730 520
+Professor_5 764 550
+Stevie_N 800 613
+Stevie 820 647
+Stevie_S 801 690
+Keep_W 1152 577
+Keep 1171 606
+Keep_E 1220 620
+Asia_N 961 775
+Asia 956 798
+Asia_SW 909 889
+Asia_SE 998 891
+Wright_NE 730 729
+Carnegie_N 832 829
+Carnegie 832 888
+Carnegie_S 832 946
+Severance 656 940
+Severance_SE 677 967
+Woodland-Lorain 303 1021
+Science_S 445 1011
+Wilder_NW 285 1096
+Wilder_SW 292 1158
+Wilder_SE 341 1175
+Wilder 336 1121
+Wilder_NE 436 1109
+Mudd 196 1269
+Mudd_E 286 1269
+Bowl_1 410 1292
+Bowl_2 437 1299
+Bowl_3 522 1345
+Bowl_4 402 1452
+Warner_E 485 1378
+Warner 454 1397
+Warner_W 417 1398
+Peters_W 575 1336
+Peters 608 1310
+Peters_NE 639 1283
+Peters_SE 643 1354
+Finney_N 666 1039
+Finney 626 1122
+Finney_E 726 1133
+Dascomb_N 309 1464
+Dascomb 281 1518
+Dascomb_S 318 1612
+Dascomb_E 393 1527
+King_NW 523 1470
+King_SW 538 1591
+King 579 1514
+King_E 653 1525
+College_2 420 1642
+College_3 513 1669
+Harkness_E 462 1725
+Harkness 417 1738
+Talcott 602 1739
+Talcott_NE 638 1704
+Professor-College 716 1639
+Professor_6 718 1442
+MemorialArch 731 1338
+Professor-Lorain 734 1024
+Lorain_1 954 1030
+Tappan 945 1345
+College_1 935 1650
+Main-College 1205 1630
+Tappan_E 1202 1357
+Allen_W 1235 1128
+Allen 1324 1144
+Main-Lorain 1225 1032
+Tappan_1 775 1523
+Edges
+Phillips_N Woodland-Union
+Woodland-Union Union_1
+North_N Union_1
+Union_1 Union_2
+North_N Union_2
+Union_2 Professor-Union
+Zechiel_N North_S
+Burton_N North_S
+Zechiel_S Phillips_S
+Phillips_S Noah_NW
+Phillips_S Barrows_NW
+Noah_SE Barrows_NE
+Burton_S Noah_NE
+Burton_S East_NW
+Burton_N French_S
+French_S Professor_2
+French_N Professor_1
+East_NE Professor_3
+Professor_3 Kahn_N
+East_SE Professor_4
+Kahn_SW Professor_5
+Kahn_SE Keep_W
+Kahn_SW Stevie_N
+Barnard_NE Professor_4
+Barnard_NE Stevie_N
+Barnard_NE Professor_5
+Barnard_NW NQuad_1
+East_SW NQuad_1
+Barnard_S Barrows_SE
+Barnard_S Science_NE
+Science_NE Wright_NW
+NQuad_1 Science_NE
+Barnard_S Wright_NE
+Wright_NE Stevie_S
+Carnegie_N Stevie_S
+Stevie_S Keep_W
+Asia_N Keep_W
+Barrows_SE Science_NW
+Wright_NE Carnegie_N
+Carnegie_N Asia_SW
+Wright_NE Severance_SE
+Wright_NE Professor-Lorain
+Professor-Lorain Carnegie_S
+Professor-Lorain Severance_SE
+Asia_SE Lorain_1
+Keep_E Main-Lorain
+Barrows_SW Hales_N
+Hales_S Woodland-Lorain
+Barrows_SW Woodland-Lorain
+Science_S Woodland-Lorain
+Science_S Wilder_NE
+Asia_SW Lorain_1
+Woodland-Lorain Wilder_NW
+Wilder_SW Mudd_E
+Wilder_SE Bowl_1
+Wilder_NE Bowl_2
+Warner_W Bowl_1
+Warner_E Bowl_3
+Bowl_3 Peters_W
+Dascomb_N Mudd_E
+Mudd_E Bowl_4
+Bowl_4 Warner_W
+Dascomb_N Bowl_4
+Bowl_4 College_2
+Bowl_4 Dascomb_E
+Dascomb_E King_NW
+Bowl_4 King_NW
+Dascomb_S College_2
+College_2 Harkness_E
+Harkness_E College_3
+King_SW College_3
+King_SW Talcott_NE
+Talcott_NE College_3
+Talcott_NE Professor-College
+Science_S Finney_N
+Woodland-Lorain Finney_N
+Wilder_NE Finney_N
+Professor-Lorain Finney_N
+Peters_NE Finney_E
+Peters_SE MemorialArch
+Peters_SE Professor_6
+Professor_6 MemorialArch
+MemorialArch Finney_E
+King_E Professor_6
+King_E Tappan_1
+Tappan_1 Professor_6
+Tappan_1 Professor-College
+King_E Professor-College
+Bowl_3 King_NW
+Tappan_1 College_1
+College_1 Tappan
+Tappan_1 Tappan
+Lorain_1 Tappan
+MemorialArch Tappan
+Professor-Lorain Tappan
+Tappan Main-Lorain
+Tappan Main-College
+Tappan_E Main-College
+Tappan_E Allen_W
+Allen_W Main-Lorain
+Phillips Phillips_N
+Phillips Phillips_S
+Phillips_N Phillips_S
+Woodland-Union Woodland-Lorain
+North_N North
+North_N North_S
+North North_S
+Professor-Union Professor_1
+Professor-Union Professor_2
+Professor-Union Professor_3
+Professor-Union Professor_4
+Professor-Union Professor_5
+Professor-Union Professor-College
+Professor-Union Professor_6
+Professor-Union Professor-Lorain
+Professor_1 Professor_2
+Professor_1 Professor_3
+Professor_1 Professor_4
+Professor_1 Professor_5
+Professor_1 Professor-College
+Professor_1 Professor_6
+Professor_1 Professor-Lorain
+Professor_2 Professor_3
+Professor_2 Professor_4
+Professor_2 Professor_5
+Professor_2 Professor-College
+Professor_2 Professor_6
+Professor_2 Professor-Lorain
+Professor_3 Professor_4
+Professor_3 Professor_5
+Professor_3 Professor-College
+Professor_3 Professor_6
+Professor_3 Professor-Lorain
+Professor_4 Professor_5
+Professor_4 Professor-College
+Professor_4 Professor_6
+Professor_4 Professor-Lorain
+Professor_5 Professor-College
+Professor_5 Professor_6
+Professor_5 Professor-Lorain
+Professor-College Professor_6
+Professor-College Professor-Lorain
+Professor_6 Professor-Lorain
+Zechiel_N Zechiel
+Zechiel_N Zechiel_S
+Zechiel Zechiel_S
+French_N French
+French_N French_S
+French French_S
+Burton_N Burton
+Burton_N Burton_S
+Burton Burton_S
+Noah_NW Noah_NE
+Noah_NW Noah
+Noah_NW Noah_SE
+Noah_NE Noah
+Noah_NE Noah_SE
+Noah Noah_SE
+East_NW East
+East_NW East_NE
+East_NW East_SE
+East_NW East_SW
+East East_NE
+East East_SE
+East East_SW
+East_NE East_SE
+East_NE East_SW
+East_SE East_SW
+Kahn_N Kahn
+Kahn_N Kahn_SW
+Kahn_N Kahn_SE
+Kahn Kahn_SW
+Kahn Kahn_SE
+Kahn_SW Kahn_SE
+Barrows_NW Barrows_NE
+Barrows_NW Barrows_SW
+Barrows_NW Barrows
+Barrows_NW Barrows_SE
+Barrows_NE Barrows_SW
+Barrows_NE Barrows
+Barrows_NE Barrows_SE
+Barrows_SW Barrows
+Barrows_SW Barrows_SE
+Barrows Barrows_SE
+Hales_N Hales
+Hales_N Hales_S
+Hales Hales_S
+Science_NW Science
+Science_NW Science_NE
+Science_NW Science_S
+Science Science_NE
+Science Science_S
+Science_NE Science_S
+Wright_NW Wright
+Wright_NW Wright_NE
+Wright Wright_NE
+Barnard_NW Barnard
+Barnard_NW Barnard_S
+Barnard_NW Barnard_NE
+Barnard Barnard_S
+Barnard Barnard_NE
+Barnard_S Barnard_NE
+Stevie_N Stevie
+Stevie_N Stevie_S
+Stevie Stevie_S
+Keep_W Keep
+Keep_W Keep_E
+Keep Keep_E
+Asia_N Asia
+Asia_N Asia_SW
+Asia_N Asia_SE
+Asia Asia_SW
+Asia Asia_SE
+Asia_SW Asia_SE
+Carnegie_N Carnegie
+Carnegie_N Carnegie_S
+Carnegie Carnegie_S
+Severance Severance_SE
+Wilder_NW Wilder_SW
+Wilder_NW Wilder_SE
+Wilder_NW Wilder
+Wilder_NW Wilder_NE
+Wilder_SW Wilder_SE
+Wilder_SW Wilder
+Wilder_SW Wilder_NE
+Wilder_SE Wilder
+Wilder_SE Wilder_NE
+Wilder Wilder_NE
+Mudd Mudd_E
+Bowl_1 Bowl_2
+Bowl_1 Bowl_3
+Bowl_1 Bowl_4
+Bowl_2 Bowl_3
+Bowl_2 Bowl_4
+Bowl_3 Bowl_4
+Warner_E Warner
+Warner_E Warner_W
+Warner Warner_W
+Peters_W Peters
+Peters_W Peters_NE
+Peters_W Peters_SE
+Peters Peters_NE
+Peters Peters_SE
+Peters_NE Peters_SE
+Finney_N Finney
+Finney_N Finney_E
+Finney Finney_E
+Dascomb_N Dascomb
+Dascomb_N Dascomb_S
+Dascomb_N Dascomb_E
+Dascomb Dascomb_S
+Dascomb Dascomb_E
+Dascomb_S Dascomb_E
+King_NW King_SW
+King_NW King
+King_NW King_E
+King_SW King
+King_SW King_E
+King King_E
+College_2 College_3
+College_2 College_1
+College_3 College_1
+Harkness_E Harkness
+Talcott Talcott_NE
+Tappan Tappan_E
+Tappan_E Tappan_1
+Main-College Main-Lorain
+Allen_W Allen
+Woodland-Union Professor-Union
+Woodland-Lorain Professor-Lorain
+Woodland-Lorain Main-Lorain
+Professor-Lorain Main-Lorain
+Professor-College Main-College
