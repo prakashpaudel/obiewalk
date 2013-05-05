@@ -10,11 +10,12 @@ import heapq
 def dijkstra(start, finish, graph):
     pq = []
     dist, pred = {}, {}
+    last_pred = {}
     explored = [start.name] 
 
     # init values to something
     for node in graph.cityList:
-        dist[node.name], pred[node.name] = -1, None
+        dist[node.name], pred[node.name], last_pred[node.name] = -1, None, None
 
     dist[start.name] = 0   
     
@@ -23,13 +24,15 @@ def dijkstra(start, finish, graph):
         node = edge.city
         dist[node.name] = edge.dist
         # push onto the heap: [dist, node, parent]
-        heapq.heappush(pq, [dist[node.name], node.name, start.name])
+        heapq.heappush(pq, [dist[node.name], node.name])
+        last_pred[node.name] = start.name
 
     # While there are items in the priority queue...
     while pq:
         # let next be the min element of pq
-        edge_cost, next, p = heapq.heappop(pq)
-        
+        edge_cost, next = heapq.heappop(pq)
+        p = last_pred[next]
+
         if next == finish.name:
             pred[next] = p
             break
@@ -40,15 +43,19 @@ def dijkstra(start, finish, graph):
             node = graph.get_city(next)
             for edge in node.neighbors:
                 city = edge.city.name
-                if dist[city] != -1:
+                if dist[city] > -1:
                     # if the current distance entry is greater than the updated one, update it.
-                    if dist[city] > edge.dist + dist[next]: # next = parent, city = edge we are exploring now
+                    if dist[city] > edge.dist + dist[next]: 
+                        old_dist = dist[city]
                         dist[city] = edge.dist + dist[next]
+                        last_pred[city] = next # keep track of the last pred
+                        pq[pq.index([old_dist, city])] = [dist[city], city]
                         # decrease the key, update dist & predecessor
-                        heapq._siftdown(pq, 0, pq.index([dist[city], city, next]))
+                        heapq._siftdown(pq, 0, pq.index([dist[city], city]))
                 else:
                     dist[city] = edge.dist + dist[next]
-                    heapq.heappush(pq, [dist[city], city, next])
+                    last_pred[city] = next
+                    heapq.heappush(pq, [dist[city], city])
 
     # build the list
     cur, path = finish.name, []

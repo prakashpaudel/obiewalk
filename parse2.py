@@ -11,7 +11,7 @@ import dijkstra
 
 def main():
     g = Graph()
-    fd = open("oberlindata.txt", "r")
+    fd = open("DATA.txt", "r")
     
     #adding nodes from file
     currentLine = fd.readline()
@@ -39,7 +39,9 @@ def main():
 #        print "Name: " + c.get_name()
 #        c.print_edges()
 
-    print dijkstra.dijkstra(g.get_city("Keep_E"), g.get_city("Mudd_E"), g)
+    start = raw_input("Start? ")
+    end = raw_input("End? ")
+    print dijkstra.dijkstra(g.get_city(start), g.get_city(end), g)
     return g
 
 main()
