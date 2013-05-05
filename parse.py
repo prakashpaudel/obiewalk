@@ -42,4 +42,5 @@ def main():
             print "Sorry,", start, "is not a valid city name."
         else:
             print "Sorry,", end, "is not a valid city name."
+
 main()

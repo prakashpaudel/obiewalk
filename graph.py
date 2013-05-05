@@ -1,3 +1,8 @@
+'''
+Created on May 4, 2013
+
+@author: prakash
+'''
 ## Graph data structure
 # CS364 - Meg Davis, Pablo Horth, and Prakash Paudel
 
@@ -17,6 +22,32 @@ class Edge:
         self.city = city
         self.dist = dist
 
+    def get_city(self):
+        return self.city
+
+
+    def get_dist(self):
+        return self.dist
+
+
+    def set_city(self, value):
+        self.city = value
+
+
+    def set_dist(self, value):
+        self.dist = value
+
+
+    def del_city(self):
+        del self.city
+
+
+    def del_dist(self):
+        del self.dist
+
+    city = property(get_city, set_city, del_city, "city's docstring")
+    dist = property(get_dist, set_dist, del_dist, "dist's docstring")
+
 """
 Node class:
 Each node has:
@@ -35,8 +66,40 @@ class Node:
             self.neighbors.append(neighbors)
         self.name = name
 
-    def __repr__(self):
+    def get_coord(self):
+        return self.coord
+
+
+    def get_neighbors(self):
+        return self.neighbors
+
+
+    def get_name(self):
         return self.name
+
+
+    def set_coord(self, value):
+        self.coord = value
+
+
+    def set_neighbors(self, value):
+        self.neighbors = value
+
+
+    def set_name(self, value):
+        self.name = value
+
+
+    def del_coord(self):
+        del self.coord
+
+
+    def del_neighbors(self):
+        del self.neighbors
+
+
+    def del_name(self):
+        del self.name
 
     def print_edges(self):
         print "Neighbors for", self.name, ":"
@@ -59,6 +122,15 @@ class Node:
             if pal.city.name == name:
                 return True
         return False
+    
+    def get_edge(self, name):
+        for pal in self.neighbors:
+            if pal.city.name == name:
+                return pal
+    
+    coord = property(get_coord, set_coord, del_coord, "coord's docstring")
+    neighbors = property(get_neighbors, set_neighbors, del_neighbors, "neighbors's docstring")
+    name = property(get_name, set_name, del_name, "name's docstring")
 
 class Graph:
     def __init__(self, cities=None, edges=None):
@@ -67,6 +139,18 @@ class Graph:
         if cities:
             for city in cities:
                 self.cityList.append(city)
+
+    def get_city_list(self):
+        return self.cityList
+
+
+    def set_city_list(self, value):
+        self.cityList = value
+
+
+    def del_city_list(self):
+        del self.cityList
+
 
     def __repr__(self):
         ret = "Cities: "
@@ -93,5 +177,5 @@ class Graph:
                 if city.name == name:
                     return city
         return None
-
-
+    
+    cityList = property(get_city_list, set_city_list, del_city_list, "cityList's docstring")

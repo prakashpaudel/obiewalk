@@ -22,14 +22,14 @@ def dijkstra(start, finish, graph):
     for edge in start.neighbors:
         node = edge.city
         dist[node.name] = edge.dist
-        # push onto the heap: [node, parent, dist[node]]
-        heapq.heappush(pq, [node.name, start.name, dist[node.name]])
+        # push onto the heap: [dist, node, parent]
+        heapq.heappush(pq, [dist[node.name], node.name, start.name])
 
     # While there are items in the priority queue...
     while pq:
         # let next be the min element of pq
-        next, p, edge_cost = heapq.heappop(pq)
-
+        edge_cost, next, p = heapq.heappop(pq)
+        
         if next == finish.name:
             pred[next] = p
             break
@@ -42,13 +42,13 @@ def dijkstra(start, finish, graph):
                 city = edge.city.name
                 if dist[city] != -1:
                     # if the current distance entry is greater than the updated one, update it.
-                    if dist[city] > edge.dist + dist[next]:
+                    if dist[city] > edge.dist + dist[next]: # next = parent, city = edge we are exploring now
                         dist[city] = edge.dist + dist[next]
                         # decrease the key, update dist & predecessor
-                        heapq._siftdown(pq, 0, pq.index([city, next, dist[city]]))
+                        heapq._siftdown(pq, 0, pq.index([dist[city], city, next]))
                 else:
                     dist[city] = edge.dist + dist[next]
-                    heapq.heappush(pq, [city, next, dist[city]])
+                    heapq.heappush(pq, [dist[city], city, next])
 
     # build the list
     cur, path = finish.name, []
